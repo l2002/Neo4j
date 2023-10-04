@@ -1,0 +1,152 @@
+﻿[
+  {
+    "n": {
+      "identity": 0,
+      "labels": [
+        "Customer"
+      ],
+      "properties": {
+        "birthday": "2002-01-01",
+        "address": "Ho Chi Minh City, Vietnam",
+        "gender": "Nam",
+        "phone": "0912345678",
+        "name": "Nguyễn Minh Luân",
+        "id": "1",
+        "vip": true,
+        "email": "nguyenminhluan@gmail.com.com"
+      },
+      "elementId": "0"
+    }
+  },
+  {
+    "n": {
+      "identity": 1,
+      "labels": [
+        "Product"
+      ],
+      "properties": {
+        "quantity": 10,
+        "price": 20000,
+        "name": "Táo",
+        "id": "SP01",
+        "type": "Thực phẩm",
+        "import_date": "2023-07-01"
+      },
+      "elementId": "1"
+    }
+  },
+  {
+    "n": {
+      "identity": 2,
+      "labels": [
+        "Store"
+      ],
+      "properties": {
+        "address": "Ho Chi Minh City, Vietnam",
+        "phone": "0912345678",
+        "name": "Cửa hàng Organic 1",
+        "id": "1"
+      },
+      "elementId": "2"
+    }
+  },
+  {
+    "n": {
+      "identity": 3,
+      "labels": [
+        "Order"
+      ],
+      "properties": {
+        "shipped_date": "2023-07-21",
+        "shipping_address": "Ho Chi Minh City, Vietnam",
+        "id": "DH01",
+        "status": "Đã giao",
+        "placed_date": "2023-07-20",
+        "customer": "Nguyễn Minh Luân"
+      },
+      "elementId": "3"
+    }
+  },
+  {
+    "n": {
+      "identity": 4,
+      "labels": [
+        "History"
+      ],
+      "properties": {
+        "total_value": 1000000,
+        "id": "1",
+        "product_list": [
+          "SP01"
+        ],
+        "purchase_date": "2023-07-20",
+        "order_id": "DH01",
+        "customer": "Nguyễn Minh Luân"
+      },
+      "elementId": "4"
+    }
+  },
+  {
+    "n": {
+      "identity": 7,
+      "labels": [
+        "Customer"
+      ],
+      "properties": {
+        "birthday": "2002-02-02",
+        "address": "Ho Chi Minh City, Vietnam",
+        "gender": "Nữ",
+        "phone": "0919284286",
+        "name": "Tô Tại Tại",
+        "id": 2,
+        "email": "mail2@gmai.com"
+      },
+      "elementId": "7"
+    }
+  },
+  {
+    "n": {
+      "identity": 12,
+      "labels": [
+        "Store"
+      ],
+      "properties": {
+        "address": "Pleiku, Gia Lia",
+        "phone": "0919281288",
+        "name": "Cửa hàng Organic 2",
+        "id": 2
+      },
+      "elementId": "12"
+    }
+  },
+  {
+    "n": {
+      "identity": 14,
+      "labels": [
+        "Store"
+      ],
+      "properties": {
+        "address": "Tân Phú, TPHCM",
+        "phone": "0929281286",
+        "name": "Cửa hàng Organic 4",
+        "id": 4
+      },
+      "elementId": "14"
+    }
+  },
+  {
+    "n": {
+      "identity": 15,
+      "labels": [
+        "Store"
+      ],
+      "properties": {
+        "address": "Hốc Môn, TPHCM",
+        "phone": "0919281286",
+        "name": "Cửa hàng Organic 3",
+        "id": 3
+      },
+      "elementId": "15"
+    }
+  }
+]
