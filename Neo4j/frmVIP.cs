@@ -51,7 +51,7 @@ namespace Neo4j
             {
                 try
                 {
-                    IResultCursor cursor = await session.RunAsync(@"MATCH (s:Store)-[v:isVIP]->(c:Customer) WHERE  s.name = '" + cboStore.SelectedItem + "' RETURN c.name");
+                    IResultCursor cursor = await session.RunAsync(@"MATCH (s:Store)-[v:hasVIP]->(c:Customer) WHERE  s.name = '" + cboStore.SelectedItem + "' RETURN c.name");
                     await foreach (var result in cursor)
                     {
                         lbl2.Text = "Danh sách khách hàng VIP tại chuỗi " + cboStore.SelectedItem;

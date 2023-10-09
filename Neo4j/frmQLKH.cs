@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Windows.Forms.DataFormats;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ToolTip;
 
 namespace Neo4j
 {
@@ -112,9 +113,82 @@ namespace Neo4j
             else
                 cboGender.SelectedIndex = 1;
 
-            txtNgaySinh.Text = dgvKH.CurrentRow.Cells[3].Value.ToString();
-            txtEmail.Text = dgvKH.CurrentRow.Cells[4].Value.ToString();
-            txtSĐT.Text = dgvKH.CurrentRow.Cells[5].Value.ToString();
+            txtNgaySinh.Text = dgvKH.CurrentRow.Cells[4].Value.ToString();
+            txtEmail.Text = dgvKH.CurrentRow.Cells[5].Value.ToString();
+            txtSĐT.Text = dgvKH.CurrentRow.Cells[6].Value.ToString();
+        }
+
+        [Obsolete]
+        public async Task inSertKHAsync()
+        {
+            IDriver driver = GraphDatabase.Driver("bolt://localhost:7687", AuthTokens.Basic("neo4j", "123456789"));
+            IAsyncSession session = driver.AsyncSession(o => o.WithDatabase("neo4j"));
+
+            try
+            {
+                IResultCursor cursor = await session.RunAsync(@"MERGE (c:Customer {id: '" + txtId.Text + "', name: '" + txtName.Text + "', address: '" + txtDiaChi.Text + "', gender: '" + cboGender.SelectedItem + "', birthday: '" + txtNgaySinh.Text + "', email: '" + txtEmail.Text + "', phone: '" + txtSĐT.Text + "'}) MERGE (s:Store {name: '" + cboStore.SelectedItem + "'}) MERGE(c) - [r:VISITED]->(s) RETURN c");
+                MessageBox.Show("Đã thêm " + txtName.Text + "vào chuỗi cửa hàng " + cboStore.SelectedItem + "");
+                _ = loadDatataAsync();
+                await cursor.ConsumeAsync();
+            }
+            finally
+            {
+                await session.CloseAsync();
+            }
+            await driver.CloseAsync();
+
+        }
+
+        private void btnThem_Click(object sender, EventArgs e)
+        {
+            txtId.Enabled = true;
+            txtName.Enabled = true;
+            txtDiaChi.Enabled = true;
+            txtNgaySinh.Enabled = true;
+            txtEmail.Enabled = true;
+            txtSĐT.Enabled = true;
+            cboGender.Enabled = true;
+            btnThem.Enabled = false;
+            btnLuu.Enabled = true;
+        }
+
+        private void btnLuu_Click(object sender, EventArgs e)
+        {
+            _ = inSertKHAsync();
+            txtId.Text = null;
+            txtName.Text = null;
+            txtDiaChi.Text = null;
+            txtNgaySinh.Text = null;
+            txtEmail.Text = null;
+            txtSĐT.Text = null;
+            cboGender.Text = null;
+            btnThem.Text = null;
+            btnLuu.Text = null;
+            btnThem.Enabled = true;
+        }
+
+
+        [Obsolete]
+        public async Task taoVIPAsync()
+        {
+            IDriver driver = GraphDatabase.Driver("bolt://localhost:7687", AuthTokens.Basic("neo4j", "123456789"));
+            IAsyncSession session = driver.AsyncSession(o => o.WithDatabase("neo4j"));
+            try
+            {
+                txtName.Text = dgvKH.CurrentRow.Cells[1].Value.ToString();
+                IResultCursor cursor = await session.RunAsync(@"match(s:Store),(c:Customer) where s.name='" + cboStore.SelectedItem + "' and c.name='" + txtName.Text + "' create (s)-[r:hasVIP]->(c) return s,c;");
+                MessageBox.Show("Đã thêm "+txtName.Text+"vào danh sách khach hàng VIP của cửa hàng!");
+                await cursor.ConsumeAsync();
+            }
+            finally
+            {
+                await session.CloseAsync();
+            }
+            await driver.CloseAsync();
+        }
+        private void btnTaoLKVip_Click(object sender, EventArgs e)
+        {
+            _ = taoVIPAsync();
         }
     }
 }

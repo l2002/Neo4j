@@ -50,6 +50,7 @@
             label10 = new Label();
             txtSĐT = new TextBox();
             cboGender = new ComboBox();
+            btnTaoLKVip = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvKH).BeginInit();
             SuspendLayout();
             // 
@@ -127,6 +128,7 @@
             btnLuu.TabIndex = 39;
             btnLuu.Text = "Lưu";
             btnLuu.UseVisualStyleBackColor = false;
+            btnLuu.Click += btnLuu_Click;
             // 
             // txtDiaChi
             // 
@@ -207,6 +209,7 @@
             btnThem.TabIndex = 28;
             btnThem.Text = "Thêm";
             btnThem.UseVisualStyleBackColor = false;
+            btnThem.Click += btnThem_Click;
             // 
             // label5
             // 
@@ -253,6 +256,7 @@
             // 
             // cboGender
             // 
+            cboGender.Enabled = false;
             cboGender.FormattingEnabled = true;
             cboGender.Items.AddRange(new object[] { "Nam", "Nữ" });
             cboGender.Location = new Point(973, 341);
@@ -260,11 +264,25 @@
             cboGender.Size = new Size(265, 23);
             cboGender.TabIndex = 44;
             // 
+            // btnTaoLKVip
+            // 
+            btnTaoLKVip.BackColor = Color.FromArgb(255, 128, 128);
+            btnTaoLKVip.Font = new Font("Segoe UI Black", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
+            btnTaoLKVip.ForeColor = Color.FromArgb(0, 0, 192);
+            btnTaoLKVip.Location = new Point(1279, 286);
+            btnTaoLKVip.Name = "btnTaoLKVip";
+            btnTaoLKVip.Size = new Size(267, 58);
+            btnTaoLKVip.TabIndex = 45;
+            btnTaoLKVip.Text = "Tạo VIP";
+            btnTaoLKVip.UseVisualStyleBackColor = false;
+            btnTaoLKVip.Click += btnTaoLKVip_Click;
+            // 
             // frmQLKH
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1574, 712);
+            Controls.Add(btnTaoLKVip);
             Controls.Add(cboGender);
             Controls.Add(label10);
             Controls.Add(txtSĐT);
@@ -319,5 +337,6 @@
         private Label label10;
         private TextBox txtSĐT;
         private ComboBox cboGender;
+        private Button btnTaoLKVip;
     }
 }

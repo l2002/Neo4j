@@ -38,7 +38,7 @@ namespace Neo4j
             try
             {
                 lblStore.Text = Data;
-                IResultCursor cursor = await session.RunAsync(@"MATCH (s:Store)-[v:isVIP]->(c:Customer) WHERE  s.name = '" + lblStore.Text + "' RETURN c.id,c.name,c.address,c.gender,c.birthday,c.email,c.phone");
+                IResultCursor cursor = await session.RunAsync(@"MATCH (s:Store)-[v:hasVIP]->(c:Customer) WHERE  s.name = '" + lblStore.Text + "' RETURN c.id,c.name,c.address,c.gender,c.birthday,c.email,c.phone");
                 await foreach (var result in cursor)
                 {
                     var row = dt.NewRow();
