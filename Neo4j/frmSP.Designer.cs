@@ -62,6 +62,7 @@
             dgvSP.RowTemplate.Height = 25;
             dgvSP.Size = new Size(563, 424);
             dgvSP.TabIndex = 0;
+            dgvSP.CellContentClick += dgvSP_CellContentClick;
             // 
             // label2
             // 
@@ -80,6 +81,7 @@
             cboLienKet.Name = "cboLienKet";
             cboLienKet.Size = new Size(427, 29);
             cboLienKet.TabIndex = 6;
+            cboLienKet.SelectedIndexChanged += cboLienKet_SelectedIndexChanged;
             cboLienKet.SelectionChangeCommitted += cboLienKet_SelectionChangeCommitted;
             // 
             // label1

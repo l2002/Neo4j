@@ -34,6 +34,7 @@
             menuStrip1 = new MenuStrip();
             quảnLýToolStripMenuItem = new ToolStripMenuItem();
             danhSáchSảnPhẩmTheoChuỗiCửaHàngToolStripMenuItem = new ToolStripMenuItem();
+            quảnLýKháchHàngToolStripMenuItem = new ToolStripMenuItem();
             menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
@@ -85,17 +86,24 @@
             // 
             // quảnLýToolStripMenuItem
             // 
-            quảnLýToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { danhSáchSảnPhẩmTheoChuỗiCửaHàngToolStripMenuItem });
+            quảnLýToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { danhSáchSảnPhẩmTheoChuỗiCửaHàngToolStripMenuItem, quảnLýKháchHàngToolStripMenuItem });
             quảnLýToolStripMenuItem.Name = "quảnLýToolStripMenuItem";
-            quảnLýToolStripMenuItem.Size = new Size(60, 20);
-            quảnLýToolStripMenuItem.Text = "Quản lý";
+            quảnLýToolStripMenuItem.Size = new Size(69, 20);
+            quảnLýToolStripMenuItem.Text = "Hệ thống";
             // 
             // danhSáchSảnPhẩmTheoChuỗiCửaHàngToolStripMenuItem
             // 
             danhSáchSảnPhẩmTheoChuỗiCửaHàngToolStripMenuItem.Name = "danhSáchSảnPhẩmTheoChuỗiCửaHàngToolStripMenuItem";
-            danhSáchSảnPhẩmTheoChuỗiCửaHàngToolStripMenuItem.Size = new Size(296, 22);
-            danhSáchSảnPhẩmTheoChuỗiCửaHàngToolStripMenuItem.Text = "Danh sách sản phẩm theo chuỗi cửa hàng";
+            danhSáchSảnPhẩmTheoChuỗiCửaHàngToolStripMenuItem.Size = new Size(180, 22);
+            danhSáchSảnPhẩmTheoChuỗiCửaHàngToolStripMenuItem.Text = "Quản lý sản phẩm";
             danhSáchSảnPhẩmTheoChuỗiCửaHàngToolStripMenuItem.Click += danhSáchSảnPhẩmTheoChuỗiCửaHàngToolStripMenuItem_Click;
+            // 
+            // quảnLýKháchHàngToolStripMenuItem
+            // 
+            quảnLýKháchHàngToolStripMenuItem.Name = "quảnLýKháchHàngToolStripMenuItem";
+            quảnLýKháchHàngToolStripMenuItem.Size = new Size(180, 22);
+            quảnLýKháchHàngToolStripMenuItem.Text = "Quản lý khách hàng";
+            quảnLýKháchHàngToolStripMenuItem.Click += quảnLýKháchHàngToolStripMenuItem_Click;
             // 
             // frmMain
             // 
@@ -124,5 +132,6 @@
         private MenuStrip menuStrip1;
         private ToolStripMenuItem quảnLýToolStripMenuItem;
         private ToolStripMenuItem danhSáchSảnPhẩmTheoChuỗiCửaHàngToolStripMenuItem;
+        private ToolStripMenuItem quảnLýKháchHàngToolStripMenuItem;
     }
 }

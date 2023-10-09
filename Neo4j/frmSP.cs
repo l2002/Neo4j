@@ -223,5 +223,15 @@ namespace Neo4j
         {
             _ = taoLienKetAsync();
         }
+
+        private void cboLienKet_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dgvSP_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

@@ -34,5 +34,11 @@ namespace Neo4j
             frmSP frm = new frmSP();
             frm.Show();
         }
+
+        private void quảnLýKháchHàngToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmQLKH frm = new frmQLKH();   
+            frm.Show(); 
+        }
     }
 }
