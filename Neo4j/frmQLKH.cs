@@ -102,20 +102,25 @@ namespace Neo4j
 
         private void dgvKH_SelectionChanged(object sender, EventArgs e)
         {
+            if (dgvKH.Rows.Count > 0)
+            {
+                txtId.Text = dgvKH.CurrentRow.Cells[0].Value.ToString();
+                txtName.Text = dgvKH.CurrentRow.Cells[1].Value.ToString();
+                txtDiaChi.Text = dgvKH.CurrentRow.Cells[2].Value.ToString();
 
-            txtId.Text = dgvKH.CurrentRow.Cells[0].Value.ToString();
-            txtName.Text = dgvKH.CurrentRow.Cells[1].Value.ToString();
-            txtDiaChi.Text = dgvKH.CurrentRow.Cells[2].Value.ToString();
+                if
+                    (dgvKH.CurrentRow.Cells[3].Value.ToString() == "Nam")
+                    cboGender.SelectedIndex = 0;
+                else
+                    cboGender.SelectedIndex = 1;
 
-            if
-                (dgvKH.CurrentRow.Cells[3].Value.ToString() == "Nam")
-                cboGender.SelectedIndex = 0;
-            else
-                cboGender.SelectedIndex = 1;
-
-            txtNgaySinh.Text = dgvKH.CurrentRow.Cells[4].Value.ToString();
-            txtEmail.Text = dgvKH.CurrentRow.Cells[5].Value.ToString();
-            txtSĐT.Text = dgvKH.CurrentRow.Cells[6].Value.ToString();
+                txtNgaySinh.Text = dgvKH.CurrentRow.Cells[4].Value.ToString();
+                txtEmail.Text = dgvKH.CurrentRow.Cells[5].Value.ToString();
+                txtSĐT.Text = dgvKH.CurrentRow.Cells[6].Value.ToString();
+            }
+            else {
+                return;
+            }
         }
 
         [Obsolete]
@@ -162,8 +167,8 @@ namespace Neo4j
             txtEmail.Text = null;
             txtSĐT.Text = null;
             cboGender.Text = null;
-            btnThem.Text = null;
-            btnLuu.Text = null;
+     
+            btnLuu.Enabled = false;
             btnThem.Enabled = true;
         }
 
@@ -176,9 +181,24 @@ namespace Neo4j
             try
             {
                 txtName.Text = dgvKH.CurrentRow.Cells[1].Value.ToString();
-                IResultCursor cursor = await session.RunAsync(@"match(s:Store),(c:Customer) where s.name='" + cboStore.SelectedItem + "' and c.name='" + txtName.Text + "' create (s)-[r:hasVIP]->(c) return s,c;");
-                MessageBox.Show("Đã thêm "+txtName.Text+"vào danh sách khach hàng VIP của cửa hàng!");
-                await cursor.ConsumeAsync();
+                IResultCursor cursor = await session.RunAsync(@"MATCH(s:Store{name:'"+cboStore.SelectedItem+"'}) RETURN  exists((s) - [:hasVIP]->(: Customer{ name: '"+txtName.Text+"'})) as kq");
+                await foreach (var result in cursor)
+                {
+                    string kq = result["kq"].ToString();
+                    if (kq == "True")
+                    {
+                        MessageBox.Show(txtName.Text + " hiện đã là VIP!");
+                        return;
+                    }
+                    else
+                    {
+                        IResultCursor cursor1 = await session.RunAsync(@"match(s:Store),(c:Customer) where s.name='" + cboStore.SelectedItem + "' and c.name='" + txtName.Text + "' create (s)-[r:hasVIP]->(c) return s,c;");
+                        MessageBox.Show("Đã thêm " + txtName.Text + "vào danh sách khach hàng VIP của cửa hàng!");
+                        await cursor1.ConsumeAsync();
+
+                    }
+                    await cursor.ConsumeAsync();
+                }
             }
             finally
             {

@@ -37,8 +37,26 @@ namespace Neo4j
 
         private void quảnLýKháchHàngToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmQLKH frm = new frmQLKH();   
-            frm.Show(); 
+            frmQLKH frm = new frmQLKH();
+            frm.Show();
+        }
+
+        private void danhSáchKháchHàngVIPToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmVIP frm = new frmVIP();
+            frm.Show();
+        }
+
+        private void danhSáchKháchHàngTheoChuôToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmTruyVanTheoChuoiCuaHang frm = new frmTruyVanTheoChuoiCuaHang();
+            frm.Show();
+        }
+
+        private void quảnLýChuỗiCửaHàngToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmChuoiCuaHang frm = new frmChuoiCuaHang();
+            frm.Show();
         }
     }
 }

@@ -91,14 +91,28 @@ namespace Neo4j
         }
 
         [Obsolete]
-        public async Task taoLienKetAsync()
+        public async Task checkLKAsync()
         {
             IDriver driver = GraphDatabase.Driver("bolt://localhost:7687", AuthTokens.Basic("neo4j", "123456789"));
             IAsyncSession session = driver.AsyncSession(o => o.WithDatabase("neo4j"));
             try
             {
-                IResultCursor cursor = await session.RunAsync(@"match(p:Product),(t:Type) where p.name='" + cboSP.SelectedItem + "' and t.name='" + cboType.SelectedItem + "' create (p)-[r:TYPE]->(t) return p,t;");
-                MessageBox.Show("Liên kết thành công!");
+                IResultCursor cursor = await session.RunAsync(@"MATCH(p:Product{name:'" + cboSP.SelectedItem + "'}) RETURN  exists((p) - [:TYPE]->(: Type{ name: '" + cboType.SelectedItem + "'})) as kq");
+                await foreach (var result in cursor)
+                {
+                    string kq = result["kq"].ToString();
+                    if (kq=="True")
+                    {
+                        MessageBox.Show("Liên kết đã tồn tại!");
+                        return;
+                    }
+                    else if(kq=="False") 
+                    {
+                        IResultCursor cursor1 = await session.RunAsync(@"match(p:Product),(t:Type) where p.name='" + cboSP.SelectedItem + "' and t.name='" + cboType.SelectedItem + "' create (p)-[r:TYPE]->(t) return p,t;");
+                        MessageBox.Show("Liên kết thành công!");
+                        await cursor1.ConsumeAsync();
+                    }
+                }
                 await cursor.ConsumeAsync();
             }
             finally
@@ -221,7 +235,7 @@ namespace Neo4j
 
         private void btnTaoLienKet_Click(object sender, EventArgs e)
         {
-            _ = taoLienKetAsync();
+            _ = checkLKAsync();
         }
 
         private void cboLienKet_SelectedIndexChanged(object sender, EventArgs e)
