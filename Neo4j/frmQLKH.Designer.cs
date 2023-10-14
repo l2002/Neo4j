@@ -51,6 +51,7 @@
             txtSĐT = new TextBox();
             cboGender = new ComboBox();
             btnTaoLKVip = new Button();
+            btnTraCuuHD = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvKH).BeginInit();
             SuspendLayout();
             // 
@@ -269,19 +270,33 @@
             btnTaoLKVip.BackColor = Color.FromArgb(255, 128, 128);
             btnTaoLKVip.Font = new Font("Segoe UI Black", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
             btnTaoLKVip.ForeColor = Color.FromArgb(0, 0, 192);
-            btnTaoLKVip.Location = new Point(1279, 286);
+            btnTaoLKVip.Location = new Point(1279, 227);
             btnTaoLKVip.Name = "btnTaoLKVip";
-            btnTaoLKVip.Size = new Size(267, 58);
+            btnTaoLKVip.Size = new Size(327, 58);
             btnTaoLKVip.TabIndex = 45;
             btnTaoLKVip.Text = "Tạo VIP";
             btnTaoLKVip.UseVisualStyleBackColor = false;
             btnTaoLKVip.Click += btnTaoLKVip_Click;
             // 
+            // btnTraCuuHD
+            // 
+            btnTraCuuHD.BackColor = Color.FromArgb(255, 128, 128);
+            btnTraCuuHD.Font = new Font("Segoe UI Black", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
+            btnTraCuuHD.ForeColor = Color.FromArgb(0, 0, 192);
+            btnTraCuuHD.Location = new Point(1279, 355);
+            btnTraCuuHD.Name = "btnTraCuuHD";
+            btnTraCuuHD.Size = new Size(327, 58);
+            btnTraCuuHD.TabIndex = 46;
+            btnTraCuuHD.Text = "Tra cứu hóa đơn Khách hàng";
+            btnTraCuuHD.UseVisualStyleBackColor = false;
+            btnTraCuuHD.Click += btnTraCuuHD_Click;
+            // 
             // frmQLKH
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1574, 712);
+            ClientSize = new Size(1661, 712);
+            Controls.Add(btnTraCuuHD);
             Controls.Add(btnTaoLKVip);
             Controls.Add(cboGender);
             Controls.Add(label10);
@@ -338,5 +353,6 @@
         private TextBox txtSĐT;
         private ComboBox cboGender;
         private Button btnTaoLKVip;
+        private Button btnTraCuuHD;
     }
 }

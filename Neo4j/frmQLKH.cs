@@ -118,7 +118,8 @@ namespace Neo4j
                 txtEmail.Text = dgvKH.CurrentRow.Cells[5].Value.ToString();
                 txtSĐT.Text = dgvKH.CurrentRow.Cells[6].Value.ToString();
             }
-            else {
+            else
+            {
                 return;
             }
         }
@@ -167,7 +168,7 @@ namespace Neo4j
             txtEmail.Text = null;
             txtSĐT.Text = null;
             cboGender.Text = null;
-     
+
             btnLuu.Enabled = false;
             btnThem.Enabled = true;
         }
@@ -181,7 +182,7 @@ namespace Neo4j
             try
             {
                 txtName.Text = dgvKH.CurrentRow.Cells[1].Value.ToString();
-                IResultCursor cursor = await session.RunAsync(@"MATCH(s:Store{name:'"+cboStore.SelectedItem+"'}) RETURN  exists((s) - [:hasVIP]->(: Customer{ name: '"+txtName.Text+"'})) as kq");
+                IResultCursor cursor = await session.RunAsync(@"MATCH(s:Store{name:'" + cboStore.SelectedItem + "'}) RETURN  exists((s) - [:hasVIP]->(: Customer{ name: '" + txtName.Text + "'})) as kq");
                 await foreach (var result in cursor)
                 {
                     string kq = result["kq"].ToString();
@@ -209,6 +210,12 @@ namespace Neo4j
         private void btnTaoLKVip_Click(object sender, EventArgs e)
         {
             _ = taoVIPAsync();
+        }
+
+        private void btnTraCuuHD_Click(object sender, EventArgs e)
+        {
+            frmTruyVanHD frm=new frmTruyVanHD();
+            frm.ShowDialog();
         }
     }
 }

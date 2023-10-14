@@ -50,6 +50,11 @@
             label10 = new Label();
             cboType = new ComboBox();
             dgvLienKet = new DataGridView();
+            btnXoa = new Button();
+            xoaLK = new Button();
+            lblSP = new Label();
+            label9 = new Label();
+            lblType = new Label();
             ((System.ComponentModel.ISupportInitialize)dgvSP).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvLienKet).BeginInit();
             SuspendLayout();
@@ -60,9 +65,9 @@
             dgvSP.Location = new Point(12, 164);
             dgvSP.Name = "dgvSP";
             dgvSP.RowTemplate.Height = 25;
-            dgvSP.Size = new Size(563, 424);
+            dgvSP.Size = new Size(563, 476);
             dgvSP.TabIndex = 0;
-            dgvSP.CellContentClick += dgvSP_CellContentClick;
+            dgvSP.SelectionChanged += dgvSP_SelectionChanged;
             // 
             // label2
             // 
@@ -142,7 +147,7 @@
             // cboSP
             // 
             cboSP.FormattingEnabled = true;
-            cboSP.Location = new Point(1225, 89);
+            cboSP.Location = new Point(1256, 92);
             cboSP.Name = "cboSP";
             cboSP.Size = new Size(265, 23);
             cboSP.TabIndex = 18;
@@ -195,7 +200,7 @@
             // label8
             // 
             label8.AutoSize = true;
-            label8.Location = new Point(1096, 89);
+            label8.Location = new Point(1127, 92);
             label8.Name = "label8";
             label8.Size = new Size(63, 15);
             label8.TabIndex = 24;
@@ -206,9 +211,9 @@
             btnTaoLienKet.BackColor = Color.FromArgb(255, 128, 128);
             btnTaoLienKet.Font = new Font("Segoe UI Black", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
             btnTaoLienKet.ForeColor = Color.FromArgb(0, 0, 192);
-            btnTaoLienKet.Location = new Point(1225, 182);
+            btnTaoLienKet.Location = new Point(1256, 185);
             btnTaoLienKet.Name = "btnTaoLienKet";
-            btnTaoLienKet.Size = new Size(147, 58);
+            btnTaoLienKet.Size = new Size(265, 58);
             btnTaoLienKet.TabIndex = 25;
             btnTaoLienKet.Text = "Tạo liên kết";
             btnTaoLienKet.UseVisualStyleBackColor = false;
@@ -228,7 +233,7 @@
             btnLuu.Enabled = false;
             btnLuu.Font = new Font("Segoe UI Black", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
             btnLuu.ForeColor = Color.FromArgb(0, 0, 192);
-            btnLuu.Location = new Point(901, 434);
+            btnLuu.Location = new Point(802, 530);
             btnLuu.Name = "btnLuu";
             btnLuu.Size = new Size(147, 58);
             btnLuu.TabIndex = 27;
@@ -239,7 +244,7 @@
             // label10
             // 
             label10.AutoSize = true;
-            label10.Location = new Point(1096, 142);
+            label10.Location = new Point(1127, 145);
             label10.Name = "label10";
             label10.Size = new Size(52, 15);
             label10.TabIndex = 31;
@@ -248,7 +253,7 @@
             // cboType
             // 
             cboType.FormattingEnabled = true;
-            cboType.Location = new Point(1225, 142);
+            cboType.Location = new Point(1256, 145);
             cboType.Name = "cboType";
             cboType.Size = new Size(265, 23);
             cboType.TabIndex = 30;
@@ -256,17 +261,78 @@
             // dgvLienKet
             // 
             dgvLienKet.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvLienKet.Location = new Point(1116, 264);
+            dgvLienKet.Location = new Point(1127, 383);
             dgvLienKet.Name = "dgvLienKet";
             dgvLienKet.RowTemplate.Height = 25;
-            dgvLienKet.Size = new Size(449, 323);
+            dgvLienKet.Size = new Size(538, 257);
             dgvLienKet.TabIndex = 32;
+            dgvLienKet.SelectionChanged += dgvLienKet_SelectionChanged;
+            // 
+            // btnXoa
+            // 
+            btnXoa.BackColor = Color.FromArgb(255, 128, 128);
+            btnXoa.Font = new Font("Segoe UI Black", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
+            btnXoa.ForeColor = Color.FromArgb(0, 0, 192);
+            btnXoa.Location = new Point(901, 434);
+            btnXoa.Name = "btnXoa";
+            btnXoa.Size = new Size(147, 58);
+            btnXoa.TabIndex = 33;
+            btnXoa.Text = "Xóa";
+            btnXoa.UseVisualStyleBackColor = false;
+            btnXoa.Click += btnXoa_Click;
+            // 
+            // xoaLK
+            // 
+            xoaLK.BackColor = Color.FromArgb(255, 128, 128);
+            xoaLK.Font = new Font("Segoe UI Black", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
+            xoaLK.ForeColor = Color.FromArgb(0, 0, 192);
+            xoaLK.Location = new Point(1256, 305);
+            xoaLK.Name = "xoaLK";
+            xoaLK.Size = new Size(265, 58);
+            xoaLK.TabIndex = 34;
+            xoaLK.Text = "Xóa liên kết";
+            xoaLK.UseVisualStyleBackColor = false;
+            xoaLK.Click += xoaLK_Click;
+            // 
+            // lblSP
+            // 
+            lblSP.AutoSize = true;
+            lblSP.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            lblSP.Location = new Point(1259, 264);
+            lblSP.Name = "lblSP";
+            lblSP.Size = new Size(45, 17);
+            lblSP.TabIndex = 35;
+            lblSP.Text = "label9";
+            // 
+            // label9
+            // 
+            label9.AutoSize = true;
+            label9.Location = new Point(1326, 266);
+            label9.Name = "label9";
+            label9.Size = new Size(94, 15);
+            label9.TabIndex = 36;
+            label9.Text = "thuộc mặc hàng";
+            // 
+            // lblType
+            // 
+            lblType.AutoSize = true;
+            lblType.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            lblType.Location = new Point(1444, 266);
+            lblType.Name = "lblType";
+            lblType.Size = new Size(45, 17);
+            lblType.TabIndex = 37;
+            lblType.Text = "label9";
             // 
             // frmSP
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1595, 675);
+            ClientSize = new Size(1724, 675);
+            Controls.Add(lblType);
+            Controls.Add(label9);
+            Controls.Add(lblSP);
+            Controls.Add(xoaLK);
+            Controls.Add(btnXoa);
             Controls.Add(dgvLienKet);
             Controls.Add(label10);
             Controls.Add(cboType);
@@ -321,5 +387,10 @@
         private Label label10;
         private ComboBox cboType;
         private DataGridView dgvLienKet;
+        private Button btnXoa;
+        private Button xoaLK;
+        private Label lblSP;
+        private Label label9;
+        private Label lblType;
     }
 }
