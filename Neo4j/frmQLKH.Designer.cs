@@ -52,6 +52,7 @@
             cboGender = new ComboBox();
             btnTaoLKVip = new Button();
             btnTraCuuHD = new Button();
+            btnTraCuuLS = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvKH).BeginInit();
             SuspendLayout();
             // 
@@ -270,9 +271,9 @@
             btnTaoLKVip.BackColor = Color.FromArgb(255, 128, 128);
             btnTaoLKVip.Font = new Font("Segoe UI Black", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
             btnTaoLKVip.ForeColor = Color.FromArgb(0, 0, 192);
-            btnTaoLKVip.Location = new Point(1279, 227);
+            btnTaoLKVip.Location = new Point(890, 654);
             btnTaoLKVip.Name = "btnTaoLKVip";
-            btnTaoLKVip.Size = new Size(327, 58);
+            btnTaoLKVip.Size = new Size(348, 58);
             btnTaoLKVip.TabIndex = 45;
             btnTaoLKVip.Text = "Tạo VIP";
             btnTaoLKVip.UseVisualStyleBackColor = false;
@@ -280,10 +281,10 @@
             // 
             // btnTraCuuHD
             // 
-            btnTraCuuHD.BackColor = Color.FromArgb(255, 128, 128);
+            btnTraCuuHD.BackColor = Color.FromArgb(128, 255, 128);
             btnTraCuuHD.Font = new Font("Segoe UI Black", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
-            btnTraCuuHD.ForeColor = Color.FromArgb(0, 0, 192);
-            btnTraCuuHD.Location = new Point(1279, 355);
+            btnTraCuuHD.ForeColor = Color.Black;
+            btnTraCuuHD.Location = new Point(1279, 273);
             btnTraCuuHD.Name = "btnTraCuuHD";
             btnTraCuuHD.Size = new Size(327, 58);
             btnTraCuuHD.TabIndex = 46;
@@ -291,11 +292,25 @@
             btnTraCuuHD.UseVisualStyleBackColor = false;
             btnTraCuuHD.Click += btnTraCuuHD_Click;
             // 
+            // btnTraCuuLS
+            // 
+            btnTraCuuLS.BackColor = Color.FromArgb(128, 255, 128);
+            btnTraCuuLS.Font = new Font("Segoe UI Black", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
+            btnTraCuuLS.ForeColor = Color.Black;
+            btnTraCuuLS.Location = new Point(1279, 373);
+            btnTraCuuLS.Name = "btnTraCuuLS";
+            btnTraCuuLS.Size = new Size(327, 58);
+            btnTraCuuLS.TabIndex = 47;
+            btnTraCuuLS.Text = "Tra cứu lịch sử mua hàng";
+            btnTraCuuLS.UseVisualStyleBackColor = false;
+            btnTraCuuLS.Click += btnTraCuuLS_Click;
+            // 
             // frmQLKH
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1661, 712);
+            ClientSize = new Size(1639, 734);
+            Controls.Add(btnTraCuuLS);
             Controls.Add(btnTraCuuHD);
             Controls.Add(btnTaoLKVip);
             Controls.Add(cboGender);
@@ -354,5 +369,6 @@
         private ComboBox cboGender;
         private Button btnTaoLKVip;
         private Button btnTraCuuHD;
+        private Button btnTraCuuLS;
     }
 }

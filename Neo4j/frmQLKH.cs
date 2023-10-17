@@ -214,7 +214,13 @@ namespace Neo4j
 
         private void btnTraCuuHD_Click(object sender, EventArgs e)
         {
-            frmTruyVanHD frm=new frmTruyVanHD();
+            frmTruyVanHD frm = new frmTruyVanHD();
+            frm.ShowDialog();
+        }
+
+        private void btnTraCuuLS_Click(object sender, EventArgs e)
+        {
+            frmTruyVanLichSu frm = new frmTruyVanLichSu();
             frm.ShowDialog();
         }
     }
