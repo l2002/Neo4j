@@ -40,7 +40,9 @@ namespace Neo4j
             }
             await driver.CloseAsync();
         }
+    
 
+   
         public async Task loadDatataAsync()
         {
             IDriver driver = GraphDatabase.Driver("bolt://localhost:7687", AuthTokens.Basic("neo4j", "123456789"));
@@ -50,6 +52,7 @@ namespace Neo4j
             dt.Columns.Add("Tên cửa hàng");
             dt.Columns.Add("Địa chỉ");
             dt.Columns.Add("SĐT");
+            
             try
             {
                 IResultCursor cursor = await session.RunAsync(@"MATCH (s:Store) WHERE s.address='" + cboAddress.SelectedItem + "' RETURN s.id,s.name,s.address,s.phone");
@@ -65,6 +68,7 @@ namespace Neo4j
                 dgvDS.DataSource = dt;
                 await cursor.ConsumeAsync();
             }
+
             catch
             {
                 MessageBox.Show("Lỗi");
@@ -73,6 +77,7 @@ namespace Neo4j
             {
                 await session.CloseAsync();
             }
+
             await driver.CloseAsync();
         }
 
@@ -105,7 +110,7 @@ namespace Neo4j
             try
             {
                 txtName.Text = dgvDS.CurrentRow.Cells[1].Value.ToString();
-                IResultCursor cursor = await session.RunAsync(@"MATCH (n:Store{name:'"+txtName.Text+"'}) DETACH DELETE n");
+                IResultCursor cursor = await session.RunAsync(@"MATCH (n:Store{name:'" + txtName.Text + "'}) DETACH DELETE n");
                 MessageBox.Show("Xóa thành công!");
                 _ = loadDatataAsync();
                 await cursor.ConsumeAsync();
@@ -128,19 +133,26 @@ namespace Neo4j
 
         private void btnLuu_Click(object sender, EventArgs e)
         {
-            _ = inSertCHAsync();
-            txtId.Text = null;
-            txtName.Text = null;
-            txtDiaChi.Text = null;
-            txtSĐT.Text = null;
+            if (txtId.Text.Equals("") || txtName.Text.Equals("") || txtDiaChi.Text.Equals("") || txtSĐT.Text.Equals(""))
+            {
+                MessageBox.Show("Vui lòng nhập đầy đủ thông tin!");
+            }
+            else
+            {
+                _ = inSertCHAsync();
+                txtId.Text = null;
+                txtName.Text = null;
+                txtDiaChi.Text = null;
+                txtSĐT.Text = null;
 
-            txtId.Enabled = false;
-            txtName.Enabled = false;
-            txtDiaChi.Enabled = false;
-            txtSĐT.Enabled = false;
+                txtId.Enabled = false;
+                txtName.Enabled = false;
+                txtDiaChi.Enabled = false;
+                txtSĐT.Enabled = false;
 
-            btnLuu.Enabled = false;
-            btnThem.Enabled = true;
+                btnLuu.Enabled = false;
+                btnThem.Enabled = true;
+            }
         }
 
         private void btnThem_Click(object sender, EventArgs e)
@@ -164,17 +176,7 @@ namespace Neo4j
 
         private void dgvDS_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (dgvDS.Rows.Count > 0)
-            {
-                txtId.Text = dgvDS.CurrentRow.Cells[0].Value.ToString();
-                txtName.Text = dgvDS.CurrentRow.Cells[1].Value.ToString();
-                txtDiaChi.Text = dgvDS.CurrentRow.Cells[2].Value.ToString();
-                txtSĐT.Text = dgvDS.CurrentRow.Cells[3].Value.ToString();
-            }
-            else
-            {
-                return;
-            }
+
         }
 
         private void bnXoa_Click(object sender, EventArgs e)
@@ -185,6 +187,21 @@ namespace Neo4j
             if (result == DialogResult.Yes)
             {
                 _ = xoaCHAsync();
+            }
+            else
+            {
+                return;
+            }
+        }
+
+        private void dgvDS_SelectionChanged(object sender, EventArgs e)
+        {
+            if (dgvDS.Rows.Count > 0)
+            {
+                txtId.Text = dgvDS.CurrentRow.Cells[0].Value.ToString();
+                txtName.Text = dgvDS.CurrentRow.Cells[1].Value.ToString();
+                txtDiaChi.Text = dgvDS.CurrentRow.Cells[2].Value.ToString();
+                txtSĐT.Text = dgvDS.CurrentRow.Cells[3].Value.ToString();
             }
             else
             {

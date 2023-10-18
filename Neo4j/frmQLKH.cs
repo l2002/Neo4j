@@ -134,8 +134,8 @@ namespace Neo4j
             {
                 IResultCursor cursor = await session.RunAsync(@"MERGE (c:Customer {id: '" + txtId.Text + "', name: '" + txtName.Text + "', address: '" + txtDiaChi.Text + "', gender: '" + cboGender.SelectedItem + "', birthday: '" + txtNgaySinh.Text + "', email: '" + txtEmail.Text + "', phone: '" + txtSĐT.Text + "'}) MERGE (s:Store {name: '" + cboStore.SelectedItem + "'}) MERGE(c) - [r:VISITED]->(s) RETURN c");
                 MessageBox.Show("Đã thêm " + txtName.Text + "vào chuỗi cửa hàng " + cboStore.SelectedItem + "");
-                _ = loadDatataAsync();
                 await cursor.ConsumeAsync();
+                _ = loadDatataAsync();
             }
             finally
             {
@@ -160,17 +160,25 @@ namespace Neo4j
 
         private void btnLuu_Click(object sender, EventArgs e)
         {
-            _ = inSertKHAsync();
-            txtId.Text = null;
-            txtName.Text = null;
-            txtDiaChi.Text = null;
-            txtNgaySinh.Text = null;
-            txtEmail.Text = null;
-            txtSĐT.Text = null;
-            cboGender.Text = null;
+            if(txtId.Text.Equals("")|| txtName.Text.Equals("") || txtDiaChi.Text.Equals("") || txtNgaySinh.Text.Equals("") || txtEmail.Text.Equals("") || txtSĐT.Text.Equals(""))
+            {
+                MessageBox.Show("Vui lòng nhập đầy đủ thông tin!");
+            }
+            else
+            {
+                _ = inSertKHAsync();
+                txtId.Text = null;
+                txtName.Text = null;
+                txtDiaChi.Text = null;
+                txtNgaySinh.Text = null;
+                txtEmail.Text = null;
+                txtSĐT.Text = null;
+                cboGender.Text = null;
 
-            btnLuu.Enabled = false;
-            btnThem.Enabled = true;
+                btnLuu.Enabled = false;
+                btnThem.Enabled = true;
+            }
+
         }
 
 
@@ -215,13 +223,19 @@ namespace Neo4j
         private void btnTraCuuHD_Click(object sender, EventArgs e)
         {
             frmTruyVanHD frm = new frmTruyVanHD();
-            frm.ShowDialog();
+            frm.Show();
         }
 
         private void btnTraCuuLS_Click(object sender, EventArgs e)
         {
             frmTruyVanLichSu frm = new frmTruyVanLichSu();
-            frm.ShowDialog();
+            frm.Show();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            frmTruyVanTheoTG frm = new frmTruyVanTheoTG();
+            frm.Show();
         }
     }
 }

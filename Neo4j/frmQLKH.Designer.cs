@@ -53,16 +53,17 @@
             btnTaoLKVip = new Button();
             btnTraCuuHD = new Button();
             btnTraCuuLS = new Button();
+            button1 = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvKH).BeginInit();
             SuspendLayout();
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
-            label1.Location = new Point(563, 45);
+            label1.Font = new Font("Segoe UI", 21.75F, FontStyle.Bold, GraphicsUnit.Point);
+            label1.Location = new Point(416, 23);
             label1.Name = "label1";
-            label1.Size = new Size(574, 25);
+            label1.Size = new Size(871, 40);
             label1.TabIndex = 13;
             label1.Text = "QUẢN LÝ DANH SÁCH KHÁCH HÀNG THEO CHUỖI CỬA HÀNG";
             // 
@@ -284,9 +285,9 @@
             btnTraCuuHD.BackColor = Color.FromArgb(128, 255, 128);
             btnTraCuuHD.Font = new Font("Segoe UI Black", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
             btnTraCuuHD.ForeColor = Color.Black;
-            btnTraCuuHD.Location = new Point(1279, 273);
+            btnTraCuuHD.Location = new Point(1273, 223);
             btnTraCuuHD.Name = "btnTraCuuHD";
-            btnTraCuuHD.Size = new Size(327, 58);
+            btnTraCuuHD.Size = new Size(399, 58);
             btnTraCuuHD.TabIndex = 46;
             btnTraCuuHD.Text = "Tra cứu hóa đơn Khách hàng";
             btnTraCuuHD.UseVisualStyleBackColor = false;
@@ -297,19 +298,33 @@
             btnTraCuuLS.BackColor = Color.FromArgb(128, 255, 128);
             btnTraCuuLS.Font = new Font("Segoe UI Black", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
             btnTraCuuLS.ForeColor = Color.Black;
-            btnTraCuuLS.Location = new Point(1279, 373);
+            btnTraCuuLS.Location = new Point(1273, 323);
             btnTraCuuLS.Name = "btnTraCuuLS";
-            btnTraCuuLS.Size = new Size(327, 58);
+            btnTraCuuLS.Size = new Size(399, 58);
             btnTraCuuLS.TabIndex = 47;
             btnTraCuuLS.Text = "Tra cứu lịch sử mua hàng";
             btnTraCuuLS.UseVisualStyleBackColor = false;
             btnTraCuuLS.Click += btnTraCuuLS_Click;
             // 
+            // button1
+            // 
+            button1.BackColor = Color.FromArgb(128, 255, 128);
+            button1.Font = new Font("Segoe UI Black", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
+            button1.ForeColor = Color.Black;
+            button1.Location = new Point(1273, 421);
+            button1.Name = "button1";
+            button1.Size = new Size(399, 58);
+            button1.TabIndex = 48;
+            button1.Text = "Tra cứu KH mua theo thời gian định kỳ";
+            button1.UseVisualStyleBackColor = false;
+            button1.Click += button1_Click;
+            // 
             // frmQLKH
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1639, 734);
+            ClientSize = new Size(1684, 734);
+            Controls.Add(button1);
             Controls.Add(btnTraCuuLS);
             Controls.Add(btnTraCuuHD);
             Controls.Add(btnTaoLKVip);
@@ -370,5 +385,6 @@
         private Button btnTaoLKVip;
         private Button btnTraCuuHD;
         private Button btnTraCuuLS;
+        private Button button1;
     }
 }

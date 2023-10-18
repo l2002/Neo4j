@@ -92,10 +92,10 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
-            label1.Location = new Point(460, 23);
+            label1.Font = new Font("Segoe UI", 21.75F, FontStyle.Bold, GraphicsUnit.Point);
+            label1.Location = new Point(449, 23);
             label1.Name = "label1";
-            label1.Size = new Size(547, 25);
+            label1.Size = new Size(831, 40);
             label1.TabIndex = 9;
             label1.Text = "QUẢN LÝ DANH SÁCH SẢN PHẨM THEO CHUỖI CỬA HÀNG";
             // 
@@ -300,9 +300,8 @@
             lblSP.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             lblSP.Location = new Point(1259, 264);
             lblSP.Name = "lblSP";
-            lblSP.Size = new Size(45, 17);
+            lblSP.Size = new Size(0, 17);
             lblSP.TabIndex = 35;
-            lblSP.Text = "label9";
             // 
             // label9
             // 
@@ -319,9 +318,8 @@
             lblType.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             lblType.Location = new Point(1444, 266);
             lblType.Name = "lblType";
-            lblType.Size = new Size(45, 17);
+            lblType.Size = new Size(0, 17);
             lblType.TabIndex = 37;
-            lblType.Text = "label9";
             // 
             // frmSP
             // 

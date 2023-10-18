@@ -42,6 +42,7 @@
             txtName.Name = "txtName";
             txtName.Size = new Size(352, 23);
             txtName.TabIndex = 0;
+            txtName.TextChanged += txtName_TextChanged;
             // 
             // dgvDS
             // 
@@ -51,6 +52,7 @@
             dgvDS.RowTemplate.Height = 25;
             dgvDS.Size = new Size(999, 434);
             dgvDS.TabIndex = 1;
+            dgvDS.CellContentClick += dgvDS_CellContentClick;
             // 
             // btnTim
             // 
@@ -70,6 +72,7 @@
             label1.Size = new Size(124, 15);
             label1.TabIndex = 3;
             label1.Text = "Nhập tên khách hàng:";
+            label1.Click += label1_Click;
             // 
             // label2
             // 
@@ -80,6 +83,7 @@
             label2.Size = new Size(277, 50);
             label2.TabIndex = 4;
             label2.Text = "TÌM HÓA ĐƠN";
+            label2.Click += label2_Click;
             // 
             // frmTruyVanHD
             // 

@@ -111,7 +111,7 @@ namespace Neo4j
                     {
                         IResultCursor cursor1 = await session.RunAsync(@"match(p:Product),(t:Type) where p.name='" + cboSP.SelectedItem + "' and t.name='" + cboType.SelectedItem + "' create (p)-[r:TYPE]->(t) return p,t;");
                         MessageBox.Show("Liên kết thành công!");
-                        _=loadLienKetSPAsync();
+                        _ = loadLienKetSPAsync();
                         await cursor1.ConsumeAsync();
                     }
                 }
@@ -240,7 +240,7 @@ namespace Neo4j
             {
                 lblSP.Text = dgvLienKet.CurrentRow.Cells[0].Value.ToString();
                 lblType.Text = dgvLienKet.CurrentRow.Cells[1].Value.ToString();
-                IResultCursor cursor = await session.RunAsync(@"MATCH (p:Product{name:'"+lblSP.Text+"'})-[r:TYPE]->(t:Type{name:'"+lblType.Text+"'}) DETACH DELETE r");
+                IResultCursor cursor = await session.RunAsync(@"MATCH (p:Product{name:'" + lblSP.Text + "'})-[r:TYPE]->(t:Type{name:'" + lblType.Text + "'}) DETACH DELETE r");
                 MessageBox.Show("Đã xóa!");
                 _ = loadLienKetSPAsync();
                 await cursor.ConsumeAsync();
@@ -328,13 +328,13 @@ namespace Neo4j
         }
 
         private void xoaLK_Click(object sender, EventArgs e)
-        {     
+        {
             DialogResult result = MessageBox.Show("Bạn có chắc muốn xóa?", "Confirmation", MessageBoxButtons.YesNo);
 
             // Check the result of the message box.
             if (result == DialogResult.Yes)
             {
-                _ = deleteLKAsync();              
+                _ = deleteLKAsync();
             }
             else
             {
