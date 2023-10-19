@@ -31,6 +31,9 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
             label1 = new Label();
             menuStrip1 = new MenuStrip();
+            fileToolStripMenuItem = new ToolStripMenuItem();
+            nhậpDữLiệuToolStripMenuItem = new ToolStripMenuItem();
+            xuấtDữLiệuToolStripMenuItem = new ToolStripMenuItem();
             quảnLýToolStripMenuItem = new ToolStripMenuItem();
             quảnLýChuỗiCửaHàngToolStripMenuItem = new ToolStripMenuItem();
             danhSáchSảnPhẩmTheoChuỗiCửaHàngToolStripMenuItem = new ToolStripMenuItem();
@@ -54,12 +57,33 @@
             // 
             // menuStrip1
             // 
-            menuStrip1.Items.AddRange(new ToolStripItem[] { quảnLýToolStripMenuItem, truyVấnToolStripMenuItem });
+            menuStrip1.Items.AddRange(new ToolStripItem[] { fileToolStripMenuItem, quảnLýToolStripMenuItem, truyVấnToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
             menuStrip1.Size = new Size(1135, 24);
             menuStrip1.TabIndex = 8;
             menuStrip1.Text = "menuStrip1";
+            // 
+            // fileToolStripMenuItem
+            // 
+            fileToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { nhậpDữLiệuToolStripMenuItem, xuấtDữLiệuToolStripMenuItem });
+            fileToolStripMenuItem.Name = "fileToolStripMenuItem";
+            fileToolStripMenuItem.Size = new Size(37, 20);
+            fileToolStripMenuItem.Text = "File";
+            // 
+            // nhậpDữLiệuToolStripMenuItem
+            // 
+            nhậpDữLiệuToolStripMenuItem.Name = "nhậpDữLiệuToolStripMenuItem";
+            nhậpDữLiệuToolStripMenuItem.Size = new Size(180, 22);
+            nhậpDữLiệuToolStripMenuItem.Text = "Nhập dữ liệu";
+            nhậpDữLiệuToolStripMenuItem.Click += nhậpDữLiệuToolStripMenuItem_Click;
+            // 
+            // xuấtDữLiệuToolStripMenuItem
+            // 
+            xuấtDữLiệuToolStripMenuItem.Name = "xuấtDữLiệuToolStripMenuItem";
+            xuấtDữLiệuToolStripMenuItem.Size = new Size(180, 22);
+            xuấtDữLiệuToolStripMenuItem.Text = "Xuất dữ liệu";
+            xuấtDữLiệuToolStripMenuItem.Click += xuấtDữLiệuToolStripMenuItem_Click;
             // 
             // quảnLýToolStripMenuItem
             // 
@@ -140,5 +164,8 @@
         private ToolStripMenuItem danhSáchKháchHàngVIPToolStripMenuItem;
         private ToolStripMenuItem danhSáchKháchHàngTheoChuôToolStripMenuItem;
         private ToolStripMenuItem quảnLýChuỗiCửaHàngToolStripMenuItem;
+        private ToolStripMenuItem fileToolStripMenuItem;
+        private ToolStripMenuItem nhậpDữLiệuToolStripMenuItem;
+        private ToolStripMenuItem xuấtDữLiệuToolStripMenuItem;
     }
 }
