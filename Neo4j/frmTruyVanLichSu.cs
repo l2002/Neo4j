@@ -21,7 +21,7 @@ namespace Neo4j
         [Obsolete]
         public async Task loadDatataAsync()
         {
-            string spmua="";
+            
             IDriver driver = GraphDatabase.Driver("bolt://localhost:7687", AuthTokens.Basic("neo4j", "123456789"));
             IAsyncSession session = driver.AsyncSession(o => o.WithDatabase("neo4j"));
             DataTable dt = new DataTable();
@@ -37,6 +37,7 @@ namespace Neo4j
                 IResultCursor cursor = await session.RunAsync(@"MATCH (c:Customer{name:'"+txtName.Text+"'})-[r:PURCHASED]->(h:History) RETURN h.order_id,h.customer,h.product_list,h.purchase_date,h.total_value");
                 await foreach (var result in cursor)
                 {
+                    string spmua="";
                     List<object> productList = (List<object>)result[2];
                              
                     var row = dt.NewRow();
