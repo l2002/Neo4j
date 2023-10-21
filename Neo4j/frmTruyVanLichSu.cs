@@ -38,8 +38,7 @@ namespace Neo4j
                 await foreach (var result in cursor)
                 {
                     List<object> productList = (List<object>)result[2];
-                    
-                   
+                             
                     var row = dt.NewRow();
                     row[0] = result[0].ToString();
                     row[1] = result[1].ToString();
